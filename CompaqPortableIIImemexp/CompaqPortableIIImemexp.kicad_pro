@@ -33,9 +33,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 4.0,
-          "height": 4.0,
-          "width": 4.0
+          "drill": 0.8,
+          "height": 1.6,
+          "width": 1.6
         },
         "silk_line_width": 0.15239999999999998,
         "silk_text_italic": false,
@@ -45,7 +45,7 @@
         "silk_text_upright": false,
         "zones": {
           "45_degree_only": false,
-          "min_clearance": 0.0
+          "min_clearance": 1.524
         }
       },
       "diff_pair_dimensions": [
@@ -123,7 +123,8 @@
         0.127,
         0.254,
         0.508,
-        0.762
+        0.762,
+        1.524
       ],
       "via_dimensions": [
         {
@@ -439,6 +440,10 @@
     [
       "ffa19494-8bf0-4389-8954-d060e9022897",
       ""
+    ],
+    [
+      "bb52eb8a-d8ab-456d-8a46-11e480bcbb83",
+      "Memory"
     ]
   ],
   "text_variables": {}
