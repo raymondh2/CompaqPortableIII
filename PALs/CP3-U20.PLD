@@ -1,0 +1,45 @@
+Name     CP3-U20 ;
+PartNo   107392-001 ;
+Date     9/8/2022 ;
+Revision 01 ;
+Designer Engineer ;
+Company  adminlocal ;
+Assembly None ;
+Location  ;
+Device   p22v10 ;
+
+/* *************** INPUT PINS *********************/
+PIN [1..10] = [A9..A0]            ; /*                                 */ 
+PIN 11      = AEN                 ; /*                                 */ 
+PIN 13      = EDB4                ; /* Unsure about this pin           */ 
+PIN 14      = IOW                 ; /* Seems to be IOW                 */ 
+PIN 16      = DSK                 ; /* I                               */ 
+PIN 23      = DISKADD             ; /*                                 */ 
+
+/* *************** OUTPUT PINS *********************/
+PIN 15      = COM1CS              ; /* COM1 CS                         */ 
+PIN 17      = 17U20to13U10        ; /* Connects to U10 Pin IO13 O      */ 
+PIN 18      = COM2CS              ; /* COM2 CS                         */ 
+PIN 19      = IDECS1              ; /* IDECS1 O                        */ 
+PIN 20      = IDECS0              ; /* Connects to U10 Pin I11 O       */ 
+PIN 21      = 21U20to7U10         ; /* Connects to U10 Pin I7 SR Flip  */ 
+PIN 22      = PRINTER             ; /* Printer? Address Suggests so O  */ 
+
+A10 = 'b'x;
+A11 = 'b'x;
+FIELD ADDRESS = [A0..A11];
+COM1      = ADDRESS:'h'[3F8..3FF];
+COM2      = ADDRESS:'h'[3E8..3EF];
+LPT1      = ADDRESS:'h'[3BC..3BF];
+IDEPRI    = ADDRESS:'h'[1F0..1F7];
+IDESEC    = ADDRESS:'h'[3F0..3F7];
+ALTIDEPRI = ADDRESS:'h'[170..177];
+ALTIDESEC    = ADDRESS:'h'[370..377];
+
+!COM1CS       = COM1 & !AEN;
+!COM2CS       = COM2 & !AEN;
+!PRINTER      = LPT1 & !AEN;
+!IDECS0       = (IDEPRI & !AEN & DSK) # (ALTIDEPRI & !AEN & !DSK);
+!IDECS1       = (IDESEC & !AEN & DISKADD) # (ALTIDESEC & !AEN & !DISKADD);
+21U20to7U10   = !21U20to7U10 & (!IDECS0 & !A0 & A1 & A2 & EDB4 & !IOW) # 21U20to7U10 & !(!IDECS0 & !A0 & A1 & A2 & !EDB4 & !IOW);
+!17U20to13U10 = (!IDECS1 & !A0 & A1 & A2);
