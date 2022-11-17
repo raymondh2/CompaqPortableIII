@@ -2,7 +2,7 @@
 
 Current PCB layouts are untested. Previous revision of the memexp did work as expected. 
 
-Recreation of U10 Part Number 107393-001 working as expected so far.
+Recreation of U10 Part Number 107393-001 working as expected so far. Recreation of U20 Part Number 107392-001 is untested.
 
 ## Other Projects
 Replacement Battery Module by Sergey Kiselev [GitHub](https://github.com/skiselev/compaq-portable-iii-battery)
