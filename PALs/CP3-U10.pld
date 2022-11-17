@@ -1,0 +1,38 @@
+Name     CP3-U10 ;
+PartNo   107393-001 ;
+Date     9/8/2022 ;
+Revision 01 ;
+Designer Engineer ;
+Company  adminlocal ;
+Assembly None ;
+Location  ;
+Device   g16v8ma ;
+
+/* *************** INPUT PINS *********************/
+PIN 1       = 1U9TO13U10          ; /*                                 */ 
+PIN 2       = EDACK2              ; /* Expansion bus DACK2             */ 
+PIN 3       = 2U9TO3U10           ; /*                                 */ 
+PIN 4       = SYSIOR              ; /*                                 */ 
+PIN 5       = EIOCS16             ; /*                                 */ 
+PIN 6       = DIP5                ; /* DIP Switch 5 hard drive enable  */ 
+PIN 7       = 21U20to7U10         ; /* Connects to U10 Pin I21         */ 
+PIN 8       = 1U9TO8U10           ; /*                                 */ 
+PIN 9       = OBUARTCS            ; /* Onboard UART CS                 */ 
+PIN 11      = IDECS0             ; /* Connects to U10 Pin IO20        */ 
+PIN 13      = 17U20to13U10        ; /* Connects to U20 Pin IO17 I      */ 
+
+/* *************** OUTPUT PINS *********************/
+PIN 12      = FLOPPYDACK          ; /* Out                             */ 
+PIN 14      = UNKNOWN             ; /* NC?                             */ 
+PIN 15      = ENINTCOM            ; /* Enable onboard UART Data buffer */ 
+PIN 16      = IDE7READ            ; /* IDE bit 7 read O                */ 
+PIN 17      = IDE7WRITE           ; /* IDE bit 7 write O               */ 
+PIN 18      = UPPERIDE            ; /* Enable Upper IDE Data bits      */ 
+PIN 19      = LOWERIDE            ; /* Enable Lower IDE Data bits      */ 
+
+!FLOPPYDACK = !EDACK2 & 2U9TO3U10;
+ENINTCOM    = (1U9TO13U10 & !2U9TO3U10 & OBUARTCS) # (1U9TO13U10 & EDACK2 & 2U9TO3U10 & OBUARTCS);
+IDE7READ    = DIP5 # SYSIOR # (IDECS0 & 17U20to13U10);
+IDE7WRITE   = DIP5 # !SYSIOR # (IDECS0 & 17U20to13U10);
+UPPERIDE    = DIP5 # EIOCS16 # IDECS0 # (21U20to7U10 & !SYSIOR);
+LOWERIDE    = DIP5 # (21U20to7U10 & !SYSIOR) # (1U9TO8U10 & IDECS0 & 17U20to13U10);
