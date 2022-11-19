@@ -1,6 +1,6 @@
 # CompaqPortableIII
 
-Current PCB layouts are untested. Previous revision of the memexp did work as expected. 
+Current PCB Memory Expansion board layout is untested. The backplane for the expansion cards is tested and working.
 
 Recreation of U10 Part Number 107393-001 working as expected so far. Recreation of U20 Part Number 107392-001 is untested.
 
