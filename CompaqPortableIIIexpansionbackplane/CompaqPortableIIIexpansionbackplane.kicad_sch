@@ -15548,7 +15548,7 @@
 				(hide yes)
 			)
 		)
-		(property "PartNumber" "74LS245N"
+		(property "PartNumber" "SN74LS245N"
 			(at 48.26 135.89 0)
 			(effects
 				(font
